@@ -1,13 +1,18 @@
+/* eslint-disable no-undef */
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    public: {url: '/', static: true},
-    src: {url: '/dist'},
+    public: { url: '/', static: true },
+    src: { url: '/dist' },
+  },
+  alias: {
+    '@': './src',
   },
   plugins: [
     '@snowpack/plugin-vue',
     '@snowpack/plugin-vue/plugin-tsx-jsx.js',
     '@snowpack/plugin-dotenv',
+    '@snowpack/plugin-postcss',
   ],
   routes: [
     /* Enable an SPA Fallback in development: */
@@ -16,6 +21,7 @@ module.exports = {
   optimize: {
     /* Example: Bundle your final build: */
     // "bundle": true,
+    splitting: true,
   },
   packageOptions: {
     /* ... */
@@ -26,4 +32,4 @@ module.exports = {
   buildOptions: {
     /* ... */
   },
-};
+}
